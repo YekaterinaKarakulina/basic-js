@@ -1,24 +1,41 @@
+var arr = [];
+var str = '';
 const chainMaker = {
+  
   getLength() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    return arr.length;
   },
   addLink(value) {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    str = '';
+    arr.push(value);
+    return chainMaker;
   },
   removeLink(position) {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    if(typeof(position) == 'number') {
+      if(position >0 && position <arr.length) {
+        arr.splice(position-1, 1);
+        return chainMaker;
+      } else {
+        arr = [];
+        throw "Error on removing wrong link";
+      }
+    } else {
+      arr = [];
+      throw "Error on removing wrong link";
+    }
   },
   reverseChain() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    arr.reverse();
+    return chainMaker;
   },
   finishChain() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    for(var i=0; i<arr.length-1; i++)
+    {
+      str = str +'( '+arr[i]+' )'+'~~';
+    }
+    str = str + '( '+arr[arr.length-1]+' )';
+    arr = [];
+    return str;
   }
 };
-
 module.exports = chainMaker;
